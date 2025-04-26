@@ -1,0 +1,19 @@
+@rootUrl=http://localhost:4000
+###
+GET {{rootUrl}}/api/restaurants 
+
+###
+GET {{rootUrl}}/api/restaurant-Items/67fa103a1a3bdbc980559239
+
+###
+POST {{rootUrl}}/api/add-foodItem 
+Content-Type: application/json 
+
+{
+    "foodName": "Pizza",
+    "foodImage":"https://content.jdmagicbox.com/v2/comp/delhi/d7/011pxx11.xx11.230721141612.b8d7/catalogue/kfc-karol-bagh-delhi-fried-chicken-restaurants-nno86yte08.jpg",
+    "price": 250,
+    "category": "Non-Veg",
+    "description": "This is a sample Pizza",
+    "restaurantId": "67a756d91e0fcf955962ade8"
+}
