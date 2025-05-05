@@ -66,7 +66,7 @@ const AddRestaurant = () => {
 
   const sendRequest = async (payload, token) => {
     try {
-      const res = await axios.post("http://localhost:4000/api/add-restaurant", payload, {
+      const res = await axios.post("https://foodzone-server.onrender.com/api/add-restaurant", payload, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
