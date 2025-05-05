@@ -15,7 +15,7 @@ const FoodItems = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/api/restaurant-Items/${id}`);
+        const res = await axios.get(`https://foodzone-server.onrender.com/api/restaurant-Items/${id}`);
         setFoodItems(res.data.foodItems);
         setRestaurant(res.data.restaurant); // Ensure your backend returns this
       } catch (err) {
