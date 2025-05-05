@@ -10,10 +10,10 @@ POST {{rootUrl}}/api/add-foodItem
 Content-Type: application/json 
 
 {
-    "foodName": "Pizza",
-    "foodImage":"https://content.jdmagicbox.com/v2/comp/delhi/d7/011pxx11.xx11.230721141612.b8d7/catalogue/kfc-karol-bagh-delhi-fried-chicken-restaurants-nno86yte08.jpg",
-    "price": 250,
-    "category": "Non-Veg",
+    "foodName": "veg-pizza",
+    "foodImage":"https://res.cloudinary.com/dalvkmppv/image/upload/v1746273650/veg-pizza_nyj9ba.jpg",
+    "price": 350,
+    "category": "Veg",
     "description": "This is a sample Pizza",
-    "restaurantId": "67a756d91e0fcf955962ade8"
+    "restaurantId": "67fa636b52c611874a6a3bf1"
 }

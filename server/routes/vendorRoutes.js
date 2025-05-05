@@ -8,6 +8,6 @@ const {
 const vendorRoutes = express.Router();
 
 vendorRoutes.post("/register", vendorRegister);
-vendorRoutes.post("/login", vendorLogin);
+vendorRoutes.post("/vendor-login", vendorLogin);
 
 module.exports = vendorRoutes;

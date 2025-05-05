@@ -13,6 +13,7 @@ const userRoutes = require("./routes/userRoutes");
 const restaurantRoutes = require("./routes/restaurantRoutes");
 const foodRoutes=require("./routes/foodRoutes")
 const vendorRoutes = require("./routes/vendorRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 
 //config
@@ -31,6 +32,7 @@ app.use("/", userRoutes);
 app.use("/api", restaurantRoutes)
 app.use("/api", foodRoutes)
 app.use("/vendor", vendorRoutes);
+app.use("/order", orderRoutes);
 
 //server listening
 const PORT = process.env.PORT || 4000;

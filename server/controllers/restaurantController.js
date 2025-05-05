@@ -1,47 +1,72 @@
 const Restaurant = require("../models/Restaurant");
+const Vendor = require("../models/Vendor");
 
 // add new restaurant
-const addRestaurant= async(req, res)=>{
-    try {
-        const {
-            restaurantName,
-            restaurantImage,
-            rating,
-            offer,
-            area
-        }=req.body
-        
-        //validation 
-        if(!restaurantName || !restaurantImage || !rating || !area){
-          res.status(400).json({message: "all fields are required"})
-        }
+const addRestaurant = async (req, res) => {
+  try {
+    const {
+      restaurantName,
+      restaurantImage,
+      rating,
+      offer,
+      area,
+      category,
+      vendorId,
+    } = req.body;
+    console.log(req.body);
 
-        let imageUrl = restaurantImage;
+    let imageUrl = restaurantImage;
 
     if (req.file) {
       imageUrl = req.file.path;
     }
+
+    // Check if vendor exists
+    const vendor = await Vendor.findById(vendorId);
+    if (!vendor)
+      return res
+        .status(404)
+        .json({ success: false, message: "Vendor ID not found" });
+
+    // Check if vendor already has a restaurant
+    const existingRestaurant = await Restaurant.findOne({ vendor: vendorId });
+    if (existingRestaurant)
+      return res
+        .status(400)
+        .json({ success: false, message: "Already added a restaurant" });
+
+    // Create new restaurant
     const newRestaurant = new Restaurant({
-        restaurantName,
-        restaurantImage: imageUrl,
-        rating,
-        offer,
-        area,
+      restaurantName,
+      restaurantImage: imageUrl,
+      rating,
+      offer,
+      area,
+      category,
+      vendor: vendorId,
     });
 
     await newRestaurant.save();
 
-    // success response of adding restaurant
-    res.status(201).json({message : "Restuarant added successfully"})
+    // Link restaurant to vendor
+    vendor.restaurant = newRestaurant._id;
+    await vendor.save();
 
-    } catch (error) {
-        console.error("AddRestaurant Error: ", error);
+    res.status(201).json({
+      success: true,
+      restaurantId: newRestaurant._id,
+      message: "Restaurant added successfully",
+      restaurant: newRestaurant,
+    });
+  } catch (error) {
+    console.error("AddRestaurant Error: ", error);
     res.status(500).json({
       success: false,
       message: "Internal Server Error! Please try again later.",
     });
   }
-}
+};
+
 
 //get restaurants with
 const getRestaurants = async (req, res) => {
