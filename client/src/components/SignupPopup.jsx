@@ -23,7 +23,7 @@ function SignupPopup() {
   const signupHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/signup", inputData);
+      const response = await axios.post("https://foodzone-server.onrender.com/signup", inputData);
       alert(response.data.message);
     } catch (error) {
       setError(error.response?.data?.message || 'Signup failed');
