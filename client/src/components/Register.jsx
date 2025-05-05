@@ -16,7 +16,7 @@ export default function Register() {
     }
 
     try {
-      const response = await axios.post("http://localhost:4000/vendor/register", {
+      const response = await axios.post("https://foodzone-server.onrender.com/vendor/register", {
         vendorName: name,           
         vendorEmail: email,
         vendorPassword: password,
