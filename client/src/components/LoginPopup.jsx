@@ -21,7 +21,7 @@ export default function LoginPopup() {
     e.preventDefault();
     setError('');
     try {
-      const res = await axios.post('http://localhost:4000/login', credentials);
+      const res = await axios.post('https://foodzone-server.onrender.com/login', credentials);
       console.log(res)
       if (res.data.success) {
         Cookies.set("token", res.data.token, { expires: 15 });
