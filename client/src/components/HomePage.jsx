@@ -18,7 +18,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/restaurants");
+        const response = await axios.get("https://foodzone-server.onrender.com/api/restaurants");
         setRestaurants(response.data.restaurants);
         setFilteredRestaurants(response.data.restaurants);
       } catch (err) {
