@@ -13,7 +13,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:4000/vendor/vendor-login", {
+      const response = await axios.post("https://foodzone-server.onrender.com/vendor/vendor-login", {
         vendorEmail: email,
         vendorPassword:password,
       });
