@@ -33,7 +33,7 @@ const UpdateRestaurant = () => {
     try {
       const token = Cookies.get("vendorToken");
       const res = await axios.get(
-        `http://localhost:4000/api/restaurant/${form.restaurantId}`,
+        `https://foodzone-server.onrender.com/api/restaurant/${form.restaurantId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const data = res.data.restaurant;
