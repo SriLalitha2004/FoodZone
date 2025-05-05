@@ -100,7 +100,7 @@ const UpdateRestaurant = () => {
 
   const sendRequest = async (payload, token) => {
     try {
-      const res = await axios.put("http://localhost:4000/api/update-restaurant", payload, {
+      const res = await axios.put("https://foodzone-server.onrender.com/api/update-restaurant", payload, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
