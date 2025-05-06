@@ -1,6 +1,6 @@
-// File: components/FoodCarousel.js
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import './FoodCarousel.css';
 
 const foodItems = [
   { name: "Biryani", image: "/biryani.jpeg" },
@@ -26,41 +26,41 @@ export default function FoodCarousel() {
   };
 
   return (
-    <div className="w-full px-6 py-4 relative">
-      <h1 className="text-2xl font-semibold mb-4">
-        <span className="text-green-600">Sri</span>, what's on your mind?
+    <div className="food-carousel-container">
+      <h1 className="food-carousel-header">
+        <span className="food-carousel-highlight">Sri</span>, what's on your mind?
       </h1>
 
-      <div className="relative">
+      <div className="carousel-wrapper">
         <button
           onClick={() => scroll("left")}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 text-sm"
+          className="carousel-button left"
         >
           <ChevronLeft />
         </button>
 
         <div
           ref={scrollRef}
-          className="flex overflow-x-auto space-x-6 scroll-smooth thin-scrollbar"
+          className="carousel-items"
         >
           {foodItems.map((item, idx) => (
             <div
               key={idx}
-              className="min-w-[120px] cursor-pointer flex flex-col items-center text-center hover:scale-105 transition"
+              className="carousel-item"
             >
               <img
                 src={item.image}
                 alt={item.name}
-                className="w-24 h-24 object-contain rounded-full"
+                className="carousel-image"
               />
-              <p className="mt-2 text-sm font-medium">{item.name}</p>
+              <p className="carousel-item-name">{item.name}</p>
             </div>
           ))}
         </div>
 
         <button
           onClick={() => scroll("right")}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow rounded-full p-2 text-sm"
+          className="carousel-button right"
         >
           <ChevronRight />
         </button>
@@ -68,4 +68,3 @@ export default function FoodCarousel() {
     </div>
   );
 }
-

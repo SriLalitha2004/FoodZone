@@ -1,7 +1,10 @@
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+// tailwind.config.js
+module.exports = {
   theme: {
-    extend: {},
-  },
-  plugins: [],
+    extend: {
+      colors: {
+        // No custom 'border' color anymore
+      }
+    }
+  }
 }

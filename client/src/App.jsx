@@ -12,6 +12,7 @@ import AddRestaurant from "./components/AddRestaurant";
 import AddFood from "./components/AddFood";
 import UpdateRestaurant from "./components/UpdateRestaurant";
 import OrderTrack from "./components/OrderTrack";
+import './index.css'
 
 function App() {
   const [cartList, setCartList] = useState([]);

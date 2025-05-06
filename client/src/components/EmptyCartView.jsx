@@ -1,18 +1,17 @@
 import { Link } from "react-router-dom";
+import './EmptyCartView.css';
 
 const EmptyCartView = () => (
-  <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-50">
+  <div className="empty-cart-container">
     <img
       src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-7359557-6024626.png"
       alt="cart empty"
-      className="w-64 h-64 object-contain mb-6"
+      className="empty-cart-image"
     />
-    <h1 className="text-2xl font-bold text-gray-800 mb-2">Your Cart Is Empty</h1>
-    <p className="text-gray-600 mb-6">You can go to home page to view more restaurants</p>
+    <h1 className="empty-cart-title">Your Cart Is Empty</h1>
+    <p className="empty-cart-description">You can go to home page to view more restaurants</p>
     <Link to="/">
-      <button className="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
-        Order Now
-      </button>
+      <button className="empty-cart-button">Order Now</button>
     </Link>
   </div>
 );

@@ -1,0 +1,78 @@
+.food-carousel-container {
+    width: 100%;
+    padding: 16px 24px;
+    position: relative;
+  }
+  
+  .food-carousel-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  
+  .food-carousel-highlight {
+    color: #38a169; /* green */
+  }
+  
+  .carousel-wrapper {
+    position: relative;
+  }
+  
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 9999px;
+    padding: 8px;
+    font-size: 14px;
+    z-index: 10;
+  }
+  
+  .carousel-button.left {
+    left: 0;
+  }
+  
+  .carousel-button.right {
+    right: 0;
+  }
+  
+  .carousel-items {
+    display: flex;
+    overflow-x: auto;
+    gap: 24px;
+    scroll-behavior: smooth;
+  }
+  
+  .carousel-items::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .carousel-item {
+    min-width: 120px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .carousel-item:hover {
+    transform: scale(1.05);
+  }
+  
+  .carousel-image {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+  
+  .carousel-item-name {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  

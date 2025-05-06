@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./OrderTrack.css"; // Import the CSS file
 
 const OrderTrack = () => {
   const [order, setOrder] = useState(null);
@@ -12,12 +13,9 @@ const OrderTrack = () => {
 
   if (!order) {
     return (
-      <div className="text-center mt-10">
+      <div className="centered-message">
         <p>No order found.</p>
-        <button
-          onClick={() => navigate("/")}
-          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-        >
+        <button onClick={() => navigate("/")} className="continue-btn">
           Continue Shopping
         </button>
       </div>
@@ -25,34 +23,31 @@ const OrderTrack = () => {
   }
 
   return (
-    <div className="p-6 max-w-3xl mx-auto space-y-6">
-      <h1 className="text-2xl font-bold">Order #{order.id}</h1>
-      <p className="text-orange-600 font-medium">Status: {order.status}</p>
+    <div className="order-container">
+      <h1 className="order-title">Order #{order.id}</h1>
+      <p className="order-status">Status: {order.status}</p>
 
       <div>
-        <h2 className="text-lg font-semibold mb-2">Items:</h2>
+        <h2 className="section-title">Items:</h2>
         {order.items.map((item, idx) => (
-          <div
-            key={idx}
-            className="flex items-center justify-between border p-4 rounded mb-3"
-          >
+          <div key={idx} className="order-item">
             <div>
-              <p className="font-semibold">{item.foodName}</p>
+              <p className="item-name">{item.foodName}</p>
               <p>Qty: {item.quantity}</p>
               <p>Price: ₹{item.price}</p>
             </div>
             <img
               src={item.foodImage}
               alt={item.foodName}
-              className="w-20 h-20 object-cover rounded-md"
+              className="item-image"
             />
           </div>
         ))}
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold mb-2">Delivery Address:</h2>
-        <div className="bg-gray-100 p-4 rounded">
+        <h2 className="section-title">Delivery Address:</h2>
+        <div className="address-box">
           <p>{order.address.receiverName}</p>
           <p>{order.address.houseNumber}</p>
           <p>{order.address.street}</p>
@@ -61,9 +56,7 @@ const OrderTrack = () => {
         </div>
       </div>
 
-      <h3 className="text-xl font-bold text-green-700">
-        Total: ₹{order.total}
-      </h3>
+      <h3 className="order-total">Total: ₹{order.total}</h3>
     </div>
   );
 };

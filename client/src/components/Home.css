@@ -1,0 +1,169 @@
+/* General Styles */
+.home-page {
+    font-family: sans-serif;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+  }
+  
+  /* Navbar */
+  .navbar {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .logo {
+    height: 40px;
+    width: 40px;
+  }
+  
+  .logo-text {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #fb8c00;
+    color: #fff;
+  }
+  
+  .navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .search-input {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: 200px;
+    font-size: 1rem;
+  }
+  
+  .navbar-link {
+    color: #4a4a4a;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  
+  .navbar-link:hover {
+    color: #fb8c00;
+  }
+  
+  .cart-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .cart-count {
+    background-color: #fb8c00;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+  }
+  
+  .logout-button {
+    background-color: #fb8c00;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #f57c00;
+  }
+  
+  /* Main Content */
+  .main-content {
+    padding: 32px 24px;
+  }
+  
+  .main-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #4a4a4a;
+    margin-bottom: 32px;
+  }
+  
+  /* Restaurant Grid */
+  .restaurant-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4a4a4a;
+    margin-bottom: 16px;
+    padding: 8px;
+  }
+  
+  .restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+  }
+  
+  .restaurant-card {
+    display: block;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+  
+  .restaurant-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .restaurant-card-content {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .restaurant-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .restaurant-info {
+    padding: 16px;
+  }
+  
+  .restaurant-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-bottom: 8px;
+  }
+  
+  .restaurant-area {
+    font-size: 1rem;
+    color: #7a7a7a;
+  }
+  
+  .restaurant-rating {
+    font-size: 1rem;
+    color: #ffbb33;
+  }
+  
+  .restaurant-offers {
+    font-size: 1rem;
+    color: #32a852;
+  }
+  

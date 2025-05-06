@@ -1,0 +1,14 @@
+.cart-list-container {
+    padding: 16px;
+  }
+  
+  .cart-item-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .cart-item-list li {
+    margin-bottom: 16px;
+  }
+  

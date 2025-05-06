@@ -2,10 +2,11 @@ import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import './AddFood.css'; // Import the CSS file
 
 const AddFood = () => {
   const restaurantId = Cookies.get("restaurantId");
-  console.log(restaurantId)
+  console.log(restaurantId);
   const navigate = useNavigate();
 
   const [inputData, setInputData] = useState({
@@ -39,7 +40,7 @@ const AddFood = () => {
     setIsLoading(true);
 
     const vendorToken = Cookies.get("vendorToken");
-    console.log("vendor token:", vendorToken)
+    console.log("vendor token:", vendorToken);
 
     if (!vendorToken) {
       setError("Unauthorized: Please log in again.");
@@ -86,47 +87,47 @@ const AddFood = () => {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+        className="open-button"
       >
         Add Food
       </button>
 
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md relative">
+        <div className="modal-overlay">
+          <div className="modal-content">
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-2 right-4 text-gray-600 text-2xl"
+              className="close-button"
             >
               &times;
             </button>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <h2 className="text-xl font-semibold text-center">Add Food Item</h2>
+            <form onSubmit={handleSubmit} className="form">
+              <h2 className="form-title">Add Food Item</h2>
 
               <input
                 name="foodName"
                 value={inputData.foodName}
                 onChange={handleInput}
                 placeholder="Food Name"
-                className="w-full px-3 py-2 border rounded"
+                className="input"
                 required
               />
 
-              <label className="block text-sm">Upload Image File</label>
+              <label className="label">Upload Image File</label>
               <input
                 type="file"
                 accept="image/*"
                 onChange={handleUploadImage}
-                className="w-full"
+                className="input"
               />
 
-              <label className="block text-sm">Or Enter Image URL</label>
+              <label className="label">Or Enter Image URL</label>
               <input
                 name="imageUrl"
                 value={inputData.imageUrl}
                 onChange={handleImageUrl}
                 placeholder="https://example.com/image.jpg"
-                className="w-full px-3 py-2 border rounded"
+                className="input"
               />
 
               <input
@@ -134,7 +135,7 @@ const AddFood = () => {
                 value={inputData.price}
                 onChange={handleInput}
                 placeholder="Price (e.g. 100)"
-                className="w-full px-3 py-2 border rounded"
+                className="input"
                 required
               />
 
@@ -142,7 +143,7 @@ const AddFood = () => {
                 name="category"
                 value={inputData.category}
                 onChange={handleInput}
-                className="w-full px-3 py-2 border rounded"
+                className="input"
                 required
               >
                 <option value="">Select Category</option>
@@ -155,15 +156,15 @@ const AddFood = () => {
                 value={inputData.description}
                 onChange={handleInput}
                 placeholder="Description"
-                className="w-full px-3 py-2 border rounded"
+                className="textarea"
                 required
               />
 
-              {error && <p className="text-red-600 text-sm">{error}</p>}
+              {error && <p className="error-message">{error}</p>}
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+                className="submit-button"
                 disabled={isLoading}
               >
                 {isLoading ? "Submitting..." : "Submit"}

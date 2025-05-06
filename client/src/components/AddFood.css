@@ -1,0 +1,95 @@
+/* Modal Background */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+  }
+  
+  /* Close Button */
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: gray;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Form Title */
+  .form-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Input Fields */
+  .input, .textarea, .select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  /* Textarea */
+  .textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  /* Labels */
+  .label {
+    font-size: 0.875rem;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  /* Submit Button */
+  .submit-button {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 1.125rem;
+    cursor: pointer;
+  }
+  
+  .submit-button:disabled {
+    background-color: #ddd;
+  }
+  
+  /* Open Button */
+  .open-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: red;
+    font-size: 0.875rem;
+  }
+  

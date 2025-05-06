@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "./Register.css"; // Importing normal CSS
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -17,7 +18,7 @@ export default function Register() {
 
     try {
       const response = await axios.post("https://foodzone-server.onrender.com/vendor/register", {
-        vendorName: name,           
+        vendorName: name,
         vendorEmail: email,
         vendorPassword: password,
       });
@@ -29,15 +30,15 @@ export default function Register() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <h2 className="text-2xl font-bold mb-6">Register</h2>
-      <form onSubmit={handleRegister} className="flex flex-col gap-4 w-80">
+    <div className="register-container">
+      <h2 className="register-title">Register</h2>
+      <form onSubmit={handleRegister} className="register-form">
         <input
           type="text"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="border p-2 rounded"
+          className="register-input"
           required
         />
         <input
@@ -45,7 +46,7 @@ export default function Register() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border p-2 rounded"
+          className="register-input"
           required
         />
         <input
@@ -53,7 +54,7 @@ export default function Register() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border p-2 rounded"
+          className="register-input"
           required
         />
         <input
@@ -61,10 +62,10 @@ export default function Register() {
           placeholder="Confirm Password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          className="border p-2 rounded"
+          className="register-input"
           required
         />
-        <button type="submit" className="bg-green-600 text-white p-2 rounded">
+        <button type="submit" className="register-button">
           Register
         </button>
       </form>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './SignupPopup.css'; // Import normal CSS
+
 function SignupPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const [inputData, setInputData] = useState({
@@ -32,22 +34,19 @@ function SignupPopup() {
   };
 
   return (
-    <div className="mt-4">
-      <button
-        onClick={handleOpen}
-        className="bg-purple-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-purple-700 transition"
-      >
+    <div className="signup-container">
+      <button onClick={handleOpen} className="signup-button">
         Sign Up
       </button>
 
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl p-8 shadow-2xl w-full max-w-md mx-4">
-            <div className="flex justify-end">
-              <button onClick={handleClose} className="text-gray-500 hover:text-gray-700">&times;</button>
+        <div className="signup-overlay">
+          <div className="signup-modal">
+            <div className="close-button">
+              <button onClick={handleClose}>&times;</button>
             </div>
-            <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Signup</h2>
-            <form onSubmit={signupHandler} className="space-y-5">
+            <h2 className="signup-title">Signup</h2>
+            <form onSubmit={signupHandler} className="signup-form">
               <input
                 type="text"
                 name="username"
@@ -55,7 +54,6 @@ function SignupPopup() {
                 value={inputData.username}
                 onChange={handleInput}
                 required
-                className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
               />
               <input
                 type="email"
@@ -64,7 +62,6 @@ function SignupPopup() {
                 value={inputData.email}
                 onChange={handleInput}
                 required
-                className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
               />
               <input
                 type="password"
@@ -73,16 +70,10 @@ function SignupPopup() {
                 value={inputData.password}
                 onChange={handleInput}
                 required
-                className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
               />
-              {error && <p className="text-red-600 text-sm">{error}</p>}
-              <div className="flex justify-center">
-                <button
-                  type="submit"
-                  className="bg-purple-600 text-white px-5 py-2 rounded-lg hover:bg-purple-700 transition"
-                >
-                  Sign Up
-                </button>
+              {error && <p className="error-message">{error}</p>}
+              <div className="signup-action">
+                <button type="submit">Sign Up</button>
               </div>
             </form>
           </div>
@@ -92,4 +83,4 @@ function SignupPopup() {
   );
 }
 
-export default SignupPopup
+export default SignupPopup;

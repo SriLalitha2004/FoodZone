@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import Footer from "./Footer";
 import FoodCarousel from "./FoodCarousel";
 import CartContext from "../context/CartContext";
+import './Home.css'; // Import the CSS file
 
 const HomePage = () => {
   const { cartList } = useContext(CartContext);
@@ -47,73 +48,68 @@ const HomePage = () => {
     navigate("/dashboard", { replace: true });
   };
 
-  if (loading) return <div className="p-4 text-lg text-center">Loading...</div>;
-  if (error) return <div className="p-4 text-red-500 text-center">{error}</div>;
+  if (loading) return <div className="loading">Loading...</div>;
+  if (error) return <div className="error">{error}</div>;
 
   return (
-    <div className="font-sans bg-gray-50 min-h-screen">
+    <div className="home-page">
       {/* NavBar */}
-      <nav className="sticky top-0 z-50 bg-white shadow p-4 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="Logo" className="h-10 w-10" />
-          <p className="text-xl font-bold text-orange-500">FoodZone</p>
+      <nav className="navbar">
+        <div className="navbar-logo">
+          <img src="/logo.png" alt="Logo" className="logo" />
+          <p className="logo-text">FoodZone</p>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="navbar-links">
           <input
             type="text"
             placeholder="Search restaurants"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="search-input"
           />
-          <Link to="/order-track" className="text-gray-700 hover:text-orange-500 font-medium">Order Track</Link>
-          <Link to="/vendor-dashboard" className="text-gray-700 hover:text-orange-500 font-medium">Add Restaurant</Link>
-          <Link to="/cart" className="text-gray-700 hover:text-orange-500 font-medium flex items-center gap-1">
-    Cart
-    {cartList.length > 0 && (
-      <span className="bg-orange-500 text-white text-xs font-semibold px-2 py-0.5 rounded-full">
-        {cartList.length}
-      </span>
-    )}
-  </Link>
-
+          <Link to="/order-track" className="navbar-link">Order Track</Link>
+          <Link to="/vendor-dashboard" className="navbar-link">Add Restaurant</Link>
+          <Link to="/cart" className="navbar-link cart-link">
+            Cart
+            {cartList.length > 0 && (
+              <span className="cart-count">{cartList.length}</span>
+            )}
+          </Link>
           <button
             onClick={handleLogout}
-            className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition"
+            className="logout-button"
           >
             Logout
           </button>
         </div>
       </nav>
 
-      <div className="px-6 md:px-20 py-6">
-        <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
+      <div className="main-content">
+        <h1 className="main-title">
           Discover the Best Food & Order Now
         </h1>
 
         <FoodCarousel />
 
-    
-    <h1 className="text-2xl font-bold text-gray-800 p-4">
-       Restaurants in Khammam
-    </h1>
-
+        <h1 className="restaurant-title">
+          Restaurants in Khammam
+        </h1>
 
         {/* Restaurant Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="restaurant-grid">
           {filteredRestaurants.map((restaurant) => (
-            <Link key={restaurant._id} to={`foodItems/${restaurant._id}`} className="hover:scale-105 transform transition">
-              <div className="bg-white rounded-2xl shadow-md hover:shadow-xl overflow-hidden">
+            <Link key={restaurant._id} to={`foodItems/${restaurant._id}`} className="restaurant-card">
+              <div className="restaurant-card-content">
                 <img
                   src={restaurant.restaurantImage || "https://via.placeholder.com/300x200"}
                   alt={restaurant.restaurantName}
-                  className="w-full h-48 object-cover"
+                  className="restaurant-image"
                 />
-                <div className="p-4">
-                  <h2 className="text-lg font-semibold text-gray-800 mb-1">{restaurant.restaurantName}</h2>
-                  <p className="text-sm text-gray-500">{restaurant.area}</p>
-                  <p className="text-sm text-yellow-600 font-medium mt-1">⭐ {restaurant.rating || "4.2"}</p>
-                  <p className="text-sm text-green-600 mt-1">{restaurant.offers || "10% OFF"}</p>
+                <div className="restaurant-info">
+                  <h2 className="restaurant-name">{restaurant.restaurantName}</h2>
+                  <p className="restaurant-area">{restaurant.area}</p>
+                  <p className="restaurant-rating">⭐ {restaurant.rating || "4.2"}</p>
+                  <p className="restaurant-offers">{restaurant.offers || "10% OFF"}</p>
                 </div>
               </div>
             </Link>

@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useNavigate } from "react-router-dom";
+import './LoginPopup.css'; // assuming same file as above
 
-export default function LoginPopup() {
-  const navigate = useNavigate();
+const LoginPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
 
@@ -22,7 +23,6 @@ export default function LoginPopup() {
     setError('');
     try {
       const res = await axios.post('https://foodzone-server.onrender.com/login', credentials);
-      console.log(res)
       if (res.data.success) {
         Cookies.set("token", res.data.token, { expires: 15 });
         Cookies.set("username", res.data.username, { expires: 15 });
@@ -37,65 +37,41 @@ export default function LoginPopup() {
       setError(error.response?.data?.message || "An error occurred");
     }
   };
-  
-
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-  //   setError('');
-  //   try {
-  //     const res = await axios.post('http://localhost:4000/login', credentials);
-  //     alert('User logged in successfully');
-  //     console.log('Login response:', res.data);
-  //     closePopup();
-  //   } catch (err) {
-  //     setError(err.response?.data?.message || 'Login failed');
-  //   }
-  // };
 
   return (
-    <div className="mt-4">
-      <button
-        onClick={openPopup}
-        className="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-700 transition"
-      >
+    <div className="login-popup-container">
+      <button className="login-button" onClick={openPopup}>
         Login
       </button>
 
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl p-6 shadow-xl w-full max-w-md mx-4 relative">
-            <button
-              onClick={closePopup}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl"
-            >
+        <div className="popup-overlay">
+          <div className="popup-box">
+            <button className="close-button" onClick={closePopup}>
               &times;
             </button>
-
-            <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
-            <form onSubmit={handleLogin} className="space-y-4">
+            <h2 className="popup-title">Login to FoodZone</h2>
+            <form onSubmit={handleLogin}>
               <input
-                type="text"
+                type="username"
                 name="username"
-                placeholder="Username"
+                placeholder="username"
                 value={credentials.username}
                 onChange={handleChange}
+                className="input-field"
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <input
                 type="password"
                 name="password"
                 placeholder="Password"
+                className="input-field"
                 value={credentials.password}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              {error && <p className="text-red-600 text-sm text-center">{error}</p>}
-              <button
-                type="submit"
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
-              >
+              {error && <p className="error-message">{error}</p>}
+              <button type="submit" className="submit-button">
                 Login
               </button>
             </form>
@@ -104,4 +80,6 @@ export default function LoginPopup() {
       )}
     </div>
   );
-}
+};
+
+export default LoginPopup;

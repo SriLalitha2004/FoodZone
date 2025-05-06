@@ -1,30 +1,32 @@
-import React from 'react'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
-    <nav className="flex items-center justify-between bg-white-600 p-4 color-black shadow-lg">
-      <div className="flex flex-col items-center space-x-4">
-          <img src="/logo.png" alt="Logo" className="h-10 w-10" />
-          <p className="text-sm font-bold text-gray-800">FoodZone</p>
+    <nav className="header">
+      <div className="logo-container">
+        <img src="/logo.png" alt="Logo" className="logo" />
+        <p className="logo-text">FoodZone</p>
       </div>
-        <div className="flex items-center gap-4">
-          <input
-            type="text"
-            placeholder="Search restaurants"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="color-white p-2 rounded-xl border-none focus:outline-none focus:ring-2 focus:ring-black"
-          />
-          <Link to="/cart" className="text-black font-semibold hover:underline">
-            Cart
-          </Link>
-          <button onClick={handleLogout} className="bg-white text-blue-600 px-4 py-2 rounded-xl hover:bg-gray-100 transition">
-            Logout
-          </button>
+      <div className="nav-links">
+        <input
+          type="text"
+          placeholder="Search restaurants"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="search-input"
+        />
+        <Link to="/cart" className="nav-link cart-link">
+          Cart
+        </Link>
+        <button onClick={handleLogout} className="logout-button">
+          Logout
+        </button>
+      </div>
+    </nav>
+  );
+};
 
-        </div>
-      </nav>
-  )
-}
-
-export default Header
+export default Header;

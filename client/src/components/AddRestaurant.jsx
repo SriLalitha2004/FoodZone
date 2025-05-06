@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import smile from "../assets/smiling-chef.png";
+import "./AddRestaurant.css";
 
 const AddRestaurant = () => {
   const vendorId = Cookies.get("vendorId");
@@ -86,68 +87,62 @@ const AddRestaurant = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
+    <div className="add-restaurant-container">
       {/* Navbar */}
-      <nav className="flex justify-between items-center p-5 bg-gradient-to-r from-orange-500 to-pink-500 text-white shadow-md">
-        <h1 className="text-2xl font-bold tracking-wide">FoodZone</h1>
-        <div className="space-x-4">
-          <Link to="/" className="hover:underline text-lg">Home</Link>
-          <Link to="/add-restaurant" className="hover:underline text-lg">+ Add Restaurant</Link>
-          <Link to="/add-foodItem" className="hover:underline text-lg">+ Add Food</Link>
-          <Link to="/update-restaurant" className="hover:underline text-lg">✏️ Update Restaurant</Link>
+      <nav className="navbar">
+        <h1 className="navbar-title">FoodZone</h1>
+        <div className="navbar-links">
+          <Link to="/" className="navbar-link">Home</Link>
+          <Link to="/add-restaurant" className="navbar-link">+ Add Restaurant</Link>
+          <Link to="/add-foodItem" className="navbar-link">+ Add Food</Link>
+          <Link to="/update-restaurant" className="navbar-link">Update Restaurant</Link>
         </div>
       </nav>
 
       {/* Hero Image */}
-      <div className="w-full h-[400px] flex items-center justify-center overflow-hidden">
+      <div className="hero-image">
         <img
           src={smile}
           alt="Delicious Food"
-          className="w-full h-full object-contain md:object-cover"
+          className="hero-img"
         />
       </div>
 
       {/* Action Buttons */}
-      <section className="my-10 flex flex-col md:flex-row items-center justify-center gap-6">
+      <section className="action-buttons">
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-gradient-to-r from-orange-500 to-pink-500 text-white px-6 py-3 rounded-full shadow-md hover:scale-105 transition"
+          className="action-btn"
         >
           + Add Restaurant
         </button>
         <Link
-          to="/manage-orders"
-          className="bg-gradient-to-r from-pink-500 to-orange-500 text-white px-6 py-3 rounded-full shadow-md hover:scale-105 transition text-center"
-        >
-          Manage Orders
-        </Link>
-        <Link
           to="/update-restaurant"
-          className="bg-gradient-to-r from-pink-500 to-orange-500 text-white px-6 py-3 rounded-full shadow-md hover:scale-105 transition text-center"
+          className="action-btn update-restaurant"
         >
-          ✏️ Update Restaurant
+          Update Restaurant
         </Link>
       </section>
 
       {/* Add Restaurant Modal */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-8 w-full max-w-lg shadow-2xl relative animate-fade-in">
+        <div className="modal-overlay">
+          <div className="modal-content">
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-5 text-gray-500 text-2xl hover:text-red-600"
+              className="close-btn"
             >
               &times;
             </button>
-            <h2 className="text-2xl font-bold mb-6 text-gray-800">Add a New Restaurant</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <h2 className="modal-title">Add a New Restaurant</h2>
+            <form onSubmit={handleSubmit} className="modal-form">
               <input
                 name="restaurantName"
                 type="text"
                 placeholder="Restaurant Name"
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="modal-input"
               />
               <input
                 name="rating"
@@ -155,7 +150,7 @@ const AddRestaurant = () => {
                 placeholder="Rating (e.g. 4.5)"
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="modal-input"
               />
 
               <select
@@ -163,7 +158,7 @@ const AddRestaurant = () => {
                 value={form.category}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="modal-input"
               >
                 <option value="">Select Category</option>
                 <option value="Veg">Veg</option>
@@ -177,7 +172,7 @@ const AddRestaurant = () => {
                 placeholder="Offers (e.g. 20% off)"
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="modal-input"
               />
               <input
                 name="area"
@@ -185,33 +180,33 @@ const AddRestaurant = () => {
                 placeholder="Area / Location"
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="modal-input"
               />
-              <div>
-                <label className="text-sm font-medium text-gray-700 block mb-1">Choose Image File</label>
+              <div className="file-upload">
+                <label className="file-label">Choose Image File</label>
                 <input
                   type="file"
                   accept="image/*"
                   onChange={handleFileChange}
-                  className="block w-full text-sm text-gray-700"
+                  className="file-input"
                 />
               </div>
-              <div>
-                <label className="text-sm font-medium text-gray-700 block mb-1">Or Enter Image URL</label>
+              <div className="url-upload">
+                <label className="url-label">Or Enter Image URL</label>
                 <input
                   name="imageUrl"
                   type="text"
                   placeholder="https://example.com/image.jpg"
                   onChange={handleChange}
                   value={form.imageUrl}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                  className="modal-input"
                 />
               </div>
-              {error && <p className="text-sm text-red-600">{error}</p>}
+              {error && <p className="error-text">{error}</p>}
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white py-2 rounded-full hover:scale-105 transition"
+                className="submit-btn"
               >
                 {loading ? "Submitting..." : "Submit"}
               </button>

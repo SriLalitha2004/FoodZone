@@ -1,0 +1,40 @@
+.vendor-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .vendor-title h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .vendor-links {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .vendor-links a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .login-btn {
+    background-color: #3b82f6;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+  }
+  
+  .register-btn {
+    background-color: #10b981;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+  }
+  
