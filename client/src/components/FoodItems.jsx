@@ -43,7 +43,7 @@ const FoodItems = () => {
       {/* Navbar */}
       <nav className="navbar">
         <div className="navbar-left">
-          <img src="/logo.png" alt="Logo" className="navbar-logo" />
+          <img src="/logo.jpg" alt="Logo" className="navbar-logo" />
           <p className="navbar-title text-white">FoodZone</p>
         </div>
         <div className="navbar-right">

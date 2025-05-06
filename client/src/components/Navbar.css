@@ -1,84 +1,92 @@
 .navbar {
   width: 100%;
+  background-color: #ffffff; /* or any color you prefer */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
   left: 0;
-  background: linear-gradient(to right, #ff7e2d, #ef476f);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* padding removed */
+  flex-wrap: wrap;
 }
 
-
-.navbar-container {
-  width: 100%;              
+.navbar-logo {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;          
-  margin: 0;               
 }
 
-
-.logo-link {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  text-decoration: none;
-  gap: 8px;
-}
-
-
-.logo-img {
-  height: 30px;
-  width: 30px;
-  object-fit: contain;
+.logo {
+  height: 40px;
+  margin-right: 8px;
 }
 
 .logo-text {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
-  color: white;
-  margin-top: 3px;
 }
 
-.navbar-spacer {
-  flex: 1;
-}
-
-.nav-links {
+.navbar-links {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.nav-link {
+.search-input {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
   font-size: 14px;
-  font-weight: 500;
-  color: white;
-  padding-top: 2px;
+}
+
+.navbar-link {
   text-decoration: none;
+  color: #333;
+  font-weight: 500;
 }
 
-.nav-link:hover {
-  text-decoration: underline;
+.cart-link {
+  position: relative;
 }
 
-.popup-btn button {
-  background-color: white;
-  color: #ef476f;
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.logout-button {
+  background: #ff4d4f;
+  color: white;
   border: none;
   padding: 6px 12px;
-  font-size: 13px;
-  font-weight: bold;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  font-size: 14px;
 }
 
-.popup-btn button:hover {
-  background-color: #ffd8e1;
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-links {
+    width: 100%;
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
 }

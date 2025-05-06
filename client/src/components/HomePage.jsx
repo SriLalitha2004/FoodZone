@@ -56,8 +56,8 @@ const HomePage = () => {
       {/* NavBar */}
       <nav className="navbar">
         <div className="navbar-logo">
-          <img src="/logo.png" alt="Logo" className="logo" />
-          <p className="logo-text">FoodZone</p>
+          <img src="/logo.jpg" alt="Logo" className="logo" />
+          <p className="logo-text pt-2">FoodZone</p>
         </div>
         <div className="navbar-links">
           <input
