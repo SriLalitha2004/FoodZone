@@ -1,34 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import LoginPopup from './LoginPopup';
-import SignupPopup from './SignupPopup';
-import './Navbar.css';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  const handleScroll = () => {
-    setIsScrolled(window.scrollY > 10);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+const Navbar = ({ searchQuery, setSearchQuery, cartList, handleLogout }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="navbar-container">
-        <Link to="/" className="logo-link">
-          <img src="/logo.png" alt="Logo" className="logo-img" />
-          <span className="logo-text">FoodZone</span>
-        </Link>
-        <div className="navbar-spacer" />
-        <div className="nav-links">
-          <Link to="/vendor-dashboard" className="nav-link">Add Restaurant</Link>
-          <div className="popup-btn pt-6"><LoginPopup /></div>
-          <div className="popup-btn"><SignupPopup /></div>
+    <nav className="navbar">
+      <div className="navbar-header">
+        <div className="navbar-logo">
+          <img src="/logo.png" alt="Logo" className="logo" />
+          <p className="logo-text">FoodZone</p>
         </div>
+
+        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </div>
+      </div>
+
+      <div className={`navbar-links ${menuOpen ? "active" : ""}`}>
+        <input
+          type="text"
+          placeholder="Search restaurants"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="search-input"
+        />
+        <Link to="/order-track" className="navbar-link">
+          Order Track
+        </Link>
+        <Link to="/vendor-dashboard" className="navbar-link">
+          Add Restaurant
+        </Link>
+        <Link to="/cart" className="navbar-link cart-link">
+          Cart
+          {cartList.length > 0 && (
+            <span className="cart-count">{cartList.length}</span>
+          )}
+        </Link>
+        <button onClick={handleLogout} className="logout-button">
+          Logout
+        </button>
       </div>
     </nav>
   );

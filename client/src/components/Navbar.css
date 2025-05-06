@@ -1,18 +1,22 @@
 .navbar {
   width: 100%;
-  background-color: #ffffff; /* or any color you prefer */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: #ffffff;
   padding: 10px 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
-  flex-wrap: wrap;
 }
 
+/* Header section */
+.navbar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo styles */
 .navbar-logo {
   display: flex;
   align-items: center;
@@ -26,13 +30,37 @@
 .logo-text {
   font-size: 18px;
   font-weight: bold;
+  color: #333;
 }
 
+/* Hamburger icon */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Navigation links */
 .navbar-links {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
 }
 
 .search-input {
@@ -40,12 +68,6 @@
   border-radius: 4px;
   border: 1px solid #ccc;
   font-size: 14px;
-}
-
-.navbar-link {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
 }
 
 .cart-link {
@@ -73,20 +95,31 @@
   font-size: 14px;
 }
 
+/* Responsive styles */
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+  .hamburger {
+    display: flex;
   }
 
   .navbar-links {
-    width: 100%;
-    margin-top: 10px;
+    display: none;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .navbar-links.active {
+    display: flex;
   }
 
   .search-input {
     width: 100%;
+  }
+
+  .navbar-link,
+  .logout-button {
+    width: 100%;
+    text-align: left;
   }
 }
